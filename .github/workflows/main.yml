@@ -25,9 +25,19 @@ jobs:
         rm -rf www/*
         cp ../index.html www/
         
-        # Yeh 2 lines aapke app ko sahi rasta dikhayengi aur error khatam kar dengi
-        echo '<content src="index.html" />' >> config.xml
-        echo '<preference name="ErrorUrl" value="index.html" />' >> config.xml
+        # Yeh settings aapke buttons aur touch ko activate kar dengi (Security bypass)
+        rm -f config.xml
+        echo '<?xml version="1.0" encoding="utf-8"?>' > config.xml
+        echo '<widget id="com.chibilingo.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">' >> config.xml
+        echo '    <name>ChibiLingo</name>' >> config.xml
+        echo '    <content src="index.html" />' >> config.xml
+        echo '    <access origin="*" />' >> config.xml
+        echo '    <allow-intent href="http://*/*" />' >> config.xml
+        echo '    <allow-intent href="https://*/*" />' >> config.xml
+        echo '    <allow-navigation href="*" />' >> config.xml
+        echo '    <preference name="AllowInlineMediaPlayback" value="true" />' >> config.xml
+        echo '    <preference name="BackupWebStorage" value="none" />' >> config.xml
+        echo '</widget>' >> config.xml
 
     - name: Build Android App
       run: |
