@@ -1,0 +1,38 @@
+name: Build Android APK
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+
+    - name: Install Cordova (App Builder)
+      run: npm install -g cordova
+
+    - name: Create Cordova Project
+      run: |
+        cordova create myapp com.chibilingo.app ChibiLingo
+        cd myapp
+        cordova platform add android
+        rm -rf www/*
+        cp ../index.html www/
+
+    - name: Build Android App
+      run: |
+        cd myapp
+        cordova build android --debug
+
+    - name: Upload APK File
+      uses: actions/upload-artifact@v4
+      with:
+        name: ChibiLingo-App
+        path: myapp/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+        
