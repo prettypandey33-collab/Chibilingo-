@@ -7,6 +7,8 @@
     <title>ChibiLingo - 5000+ Asian Words | Cute Anime Style</title>
     <meta name="description" content="Learn Korean, Japanese, Chinese & Thai with 5000+ words each. Cute chibi characters guide you through lessons and quizzes.">
     <meta name="theme-color" content="#FFB6C1">
+    
+    <!-- Fonts aur Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -39,15 +41,6 @@
             --shadow-lg: 0 8px 32px rgba(180, 160, 200, 0.3);
             --radius: 24px;
             --radius-sm: 14px;
-            --radius-xs: 10px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            --gold: #FFD700;
-            --xp-bar: #FFB6C1;
-            --success: #7ED6A4;
-            --warning: #FFD93D;
-            --danger: #FF8B8B;
-            --info: #A8D8EA;
         }
 
         .dark-mode {
@@ -56,8 +49,6 @@
             --text: #e0d8f0;
             --text-light: #b0a8c8;
             --text-dark: #f0e8ff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
             --pink-light: #3d2a3a;
             --lavender-light: #2d253d;
             --sky-blue-light: #1f2d3a;
@@ -78,12 +69,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background var(--transition), color var(--transition);
             background-image:
                 radial-gradient(ellipse at 20% 10%, rgba(255, 182, 193, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 90%, rgba(201, 177, 255, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(168, 216, 234, 0.08) 0%, transparent 60%);
+                radial-gradient(ellipse at 80% 90%, rgba(201, 177, 255, 0.12) 0%, transparent 50%);
             background-attachment: fixed;
+            transition: background 0.3s, color 0.3s;
         }
 
         .app-container {
@@ -93,21 +83,8 @@
             background: var(--bg);
             position: relative;
             overflow-x: hidden;
-            overflow-y: auto;
-            box-shadow: 0 0 80px rgba(180, 150, 200, 0.25);
-            border-radius: 0;
             display: flex;
             flex-direction: column;
-            transition: all var(--transition);
-        }
-
-        @media (min-width: 500px) {
-            .app-container {
-                border-radius: 28px;
-                min-height: 92vh;
-                max-height: 96vh;
-                margin: 2vh auto;
-            }
         }
 
         .app-header {
@@ -121,7 +98,6 @@
             z-index: 100;
             border-radius: 0 0 28px 28px;
             box-shadow: 0 4px 20px rgba(200, 160, 200, 0.35);
-            transition: all var(--transition);
         }
 
         .header-left {
@@ -129,6 +105,7 @@
             align-items: center;
             gap: 10px;
         }
+
         .mascot-header {
             width: 42px;
             height: 42px;
@@ -138,27 +115,21 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             animation: bounce-gentle 2s infinite;
         }
+
         @keyframes bounce-gentle {
             0%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-6px); }
-            50% { transform: translateY(0); }
-            70% { transform: translateY(-3px); }
+            50% { transform: translateY(-5px); }
         }
+
         .app-title {
             color: #fff;
             font-weight: 900;
-            font-size: 1.3rem;
-            letter-spacing: -0.5px;
+            font-size: 1.4rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .header-actions {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
+
         .icon-btn {
             width: 38px;
             height: 38px;
@@ -168,134 +139,52 @@
             color: #fff;
             font-size: 1rem;
             cursor: pointer;
-            transition: all var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(10px);
         }
-        .icon-btn:hover {
-            background: rgba(255,255,255,0.5);
-            transform: scale(1.08);
-        }
-        .icon-btn:active {
-            transform: scale(0.92);
-        }
 
         .main-content {
             flex: 1;
             padding: 16px 16px 100px 16px;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-        }
-        .screen {
-            display: none;
-            animation: fadeSlideIn 0.4s ease-out;
-        }
-        .screen.active {
-            display: block;
-        }
-        @keyframes fadeSlideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes popIn {
-            0% { transform: scale(0.6); opacity: 0; }
-            70% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes float {
-            0%,100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-        }
-        @keyframes pulse-glow {
-            0%,100% { box-shadow: 0 0 10px rgba(255,182,193,0.4); }
-            50% { box-shadow: 0 0 30px rgba(255,182,193,0.8), 0 0 60px rgba(201,177,255,0.4); }
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 18px;
-            margin-bottom: 14px;
-            box-shadow: var(--shadow);
-            transition: all var(--transition);
-            border: 1px solid transparent;
-            cursor: pointer;
-        }
-        .card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-            border-color: var(--pink-light);
-        }
-        .card:active {
-            transform: scale(0.97);
-            transition: 0.1s;
-        }
-        .card-row {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-        .card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            flex-shrink: 0;
-        }
-        .card-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .card-title {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--text-dark);
-        }
-        .card-subtitle {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 2px;
         }
 
         .lang-card {
             background: var(--card-bg);
             border-radius: var(--radius);
             padding: 20px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             box-shadow: var(--shadow);
             cursor: pointer;
-            transition: all var(--transition);
             display: flex;
             align-items: center;
             gap: 14px;
             border: 3px solid transparent;
+            transition: all 0.3s;
         }
+
         .lang-card:hover {
             border-color: var(--pink);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-        .lang-card:active {
-            transform: scale(0.96);
-        }
+
         .lang-emoji {
             font-size: 44px;
-            flex-shrink: 0;
-            animation: float 3s ease-in-out infinite;
         }
+
         .lang-name {
             font-weight: 800;
             font-size: 1.1rem;
             color: var(--text-dark);
         }
+
         .lang-meta {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-light);
         }
+
         .lang-progress-bar {
             height: 6px;
             background: #eee;
@@ -303,10 +192,10 @@
             margin-top: 6px;
             overflow: hidden;
         }
+
         .lang-progress-fill {
             height: 100%;
             border-radius: 10px;
-            transition: width 0.8s ease;
             background: linear-gradient(90deg, var(--pink), var(--lavender));
         }
 
@@ -321,68 +210,52 @@
             box-shadow: var(--shadow);
             border: 2px dashed #FFD700;
         }
+
         .dark-mode .streak-banner {
             background: linear-gradient(135deg, #3d3520, #4a3d1a);
             border-color: #b8960f;
         }
-        .streak-fire {
-            font-size: 36px;
-            animation: pulse-glow 1.5s infinite;
-        }
+
         .streak-count {
             font-weight: 900;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: #e67e00;
         }
-        .dark-mode .streak-count {
-            color: #ffb830;
+
+        .chibi-speech {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 12px 16px;
+            position: relative;
+            box-shadow: var(--shadow);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            max-width: 80%;
+            margin-bottom: 10px;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 22px;
-            border-radius: 50px;
-            border: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all var(--transition);
-            font-family: inherit;
+        .chibi-speech::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 14px solid var(--white);
         }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(255,145,164,0.4);
+
+        .mascot-big {
+            font-size: 80px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
         }
-        .btn-primary:hover {
-            box-shadow: 0 6px 22px rgba(255,145,164,0.55);
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background: var(--lavender-light);
-            color: var(--lavender-dark);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--pink);
-            color: var(--pink-dark);
-        }
-        .btn-sm {
-            padding: 8px 16px;
-            font-size: 0.8rem;
-            border-radius: 30px;
-        }
-        .btn-block {
-            width: 100%;
-            justify-content: center;
-        }
-        .btn-gold {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #5a3500;
-            font-weight: 800;
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
 
         .bottom-nav {
@@ -396,248 +269,176 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 8px 8px 14px 8px;
+            padding: 10px 8px 16px 8px;
             box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
             z-index: 100;
             border-radius: 22px 22px 0 0;
         }
+
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            cursor: pointer;
-            padding: 6px 14px;
-            border-radius: 20px;
-            transition: all var(--transition);
-            border: none;
             background: none;
+            border: none;
             color: var(--text-light);
-            font-family: inherit;
-            font-size: 0.7rem;
-            font-weight: 600;
-            position: relative;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
         }
+
         .nav-item.active {
             color: var(--pink-dark);
-            background: var(--pink-light);
         }
+
         .nav-item i {
             font-size: 1.3rem;
-            transition: all var(--transition);
-        }
-        .nav-item.active i {
-            transform: scale(1.15);
-        }
-        .nav-badge {
-            position: absolute;
-            top: -2px;
-            right: 6px;
-            background: #FF6B6B;
-            color: #fff;
-            font-size: 0.6rem;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
         }
 
-        .quiz-option {
-            display: block;
-            width: 100%;
-            padding: 14px 18px;
-            margin: 8px 0;
+        .ad-box {
+            background: var(--lavender-light);
             border-radius: var(--radius-sm);
-            border: 2px solid #eee;
-            background: var(--card-bg);
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-align: left;
-            transition: all var(--transition);
-            color: var(--text);
-        }
-        .quiz-option:hover {
-            border-color: var(--lavender);
-            background: var(--lavender-light);
-        }
-        .quiz-option.correct {
-            border-color: #4CAF50 !important;
-            background: #E8F5E9 !important;
-            animation: popIn 0.4s ease;
-        }
-        .quiz-option.wrong {
-            border-color: #f44336 !important;
-            background: #FFEBEE !important;
-            animation: shake 0.5s ease;
-        }
-        @keyframes shake {
-            0%,100% { transform: translateX(0); }
-            25% { transform: translateX(-8px); }
-            75% { transform: translateX(8px); }
-        }
-
-        .xp-container {
-            background: #eee;
-            border-radius: 20px;
-            height: 10px;
-            overflow: hidden;
-            margin: 8px 0;
-        }
-        .xp-fill {
-            height: 100%;
-            border-radius: 20px;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            transition: width 0.6s ease;
-        }
-
-        .badge-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            font-size: 22px;
-            margin: 4px;
-            transition: all var(--transition);
-            background: var(--lavender-light);
-            border: 3px solid var(--lavender);
-        }
-        .badge-earned {
-            border-color: #FFD700 !important;
-            background: #FFF9E6 !important;
-            box-shadow: 0 0 15px rgba(255,215,0,0.4);
-        }
-
-        .chibi-speech {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 12px 16px;
-            position: relative;
-            box-shadow: var(--shadow);
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-block;
-            max-width: 80%;
-            animation: popIn 0.5s ease;
-        }
-        .chibi-speech::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 30px;
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-top: 14px solid var(--white);
-        }
-
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.8rem;
-        }
-        .admin-table th, .admin-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #eee;
-            text-align: left;
-        }
-        .admin-table th {
-            background: var(--lavender-light);
-            font-weight: 700;
+            padding: 12px;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            border: 1px dashed var(--lavender);
+            min-height: 60px;
         }
 
         .toast {
             position: fixed;
-            top: 20px;
+            top: 25px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 9999;
-            background: #333;
+            background: #FF91A4;
             color: #fff;
             padding: 12px 24px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-            animation: popIn 0.4s ease;
-            pointer-events: none;
-            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            display: none;
         }
-        .toast.success { background: #4CAF50; }
-        .toast.error { background: #f44336; }
+    </style>
+    
+    <!-- Yeh line app ko white screen hone se bachati hai -->
+    <script src="cordova.js"></script>
+</head>
+<body>
 
-        .ad-placeholder {
-            background: var(--lavender-light);
-            border-radius: var(--radius-sm);
-            padding: 10px;
-            text-align: center;
-            margin: 10px 0;
-            font-size: 0.7rem;
-            color: var(--text-light);
-            border: 1px dashed var(--lavender);
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="mascot-header">🌸</div>
+                <div class="app-title">ChibiLingo</div>
+            </div>
+            <button class="icon-btn" onclick="toggleDarkMode()"><i class="fas fa-moon"></i></button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Ad Space 1 -->
+            <div class="ad-box">
+                <i class="fas fa-ad"></i> Sponsored Advertisement
+            </div>
+
+            <!-- Streak -->
+            <div class="streak-banner">
+                <div style="font-size: 32px;">🔥</div>
+                <div>
+                    <div class="streak-count">Day 1 Streak!</div>
+                    <p style="font-size: 0.8rem; color: #8a6d3b;">Aapka swagat hai! Let's learn! ✨</p>
+                </div>
+            </div>
+
+            <!-- Character Mascot -->
+            <div style="text-align: center; margin: 25px 0;">
+                <div class="chibi-speech">Annyeong! Konnichiwa! Chaliye Asian languages seekhein? 🥰</div>
+                <span class="mascot-big">👧🏻</span>
+            </div>
+
+            <h3 style="margin: 20px 0 10px 5px; font-weight: 800;">Select Language</h3>
+
+            <!-- Korean Card -->
+            <div class="lang-card" onclick="showToast('Loading Korean Lessons...')">
+                <div class="lang-emoji">🇰🇷</div>
+                <div style="flex: 1;">
+                    <div class="lang-name">Korean (한국어)</div>
+                    <div class="lang-meta">0 / 5000+ Words</div>
+                    <div class="lang-progress-bar"><div class="lang-progress-fill" style="width: 2%;"></div></div>
+                </div>
+            </div>
+
+            <!-- Japanese Card -->
+            <div class="lang-card" onclick="showToast('Loading Japanese Lessons...')">
+                <div class="lang-emoji">🇯🇵</div>
+                <div style="flex: 1;">
+                    <div class="lang-name">Japanese (日本語)</div>
+                    <div class="lang-meta">0 / 5000+ Words</div>
+                    <div class="lang-progress-bar"><div class="lang-progress-fill" style="width: 2%;"></div></div>
+                </div>
+            </div>
+
+            <!-- Chinese Card -->
+            <div class="lang-card" onclick="showToast('Loading Chinese Lessons...')">
+                <div class="lang-emoji">🇨🇳</div>
+                <div style="flex: 1;">
+                    <div class="lang-name">Chinese (中文)</div>
+                    <div class="lang-meta">0 / 5000+ Words</div>
+                    <div class="lang-progress-bar"><div class="lang-progress-fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+
+            <!-- Thai Card -->
+            <div class="lang-card" onclick="showToast('Loading Thai Lessons...')">
+                <div class="lang-emoji">🇹🇭</div>
+                <div style="flex: 1;">
+                    <div class="lang-name">Thai (ภาษาไทย)</div>
+                    <div class="lang-meta">0 / 5000+ Words</div>
+                    <div class="lang-progress-bar"><div class="lang-progress-fill" style="width: 0%;"></div></div>
+                </div>
+            </div>
+
+            <!-- Ad Space 2 -->
+            <div class="ad-box" style="margin-top: 25px;">
+                <i class="fas fa-ad"></i> Sponsored Advertisement
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active"><i class="fas fa-home"></i> Home</button>
+            <button class="nav-item" onclick="showToast('Lessons opening soon!')"><i class="fas fa-book-open"></i> Learn</button>
+            <button class="nav-item" onclick="showToast('Quizzes coming soon!')"><i class="fas fa-trophy"></i> Quiz</button>
+        </nav>
+    </div>
+
+    <!-- Alert Popup (Toast) -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Cordova Device Ready Setup
+        document.addEventListener('deviceready', function() {
+            console.log("ChibiLingo Mobile App Ready!");
+        }, false);
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            showToast('Theme Updated! 🌓');
         }
 
-        .mascot-big {
-            font-size: 80px;
-            text-align: center;
-            animation: float 3s ease-in-out infinite;
-            display: block;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 2000);
         }
-
-        .lesson-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 20px;
-            margin: 10px 0;
-            box-shadow: var(--shadow);
-            border-left: 5px solid var(--pink);
-            transition: all var(--transition);
-        }
-        .lesson-text-original {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-dark);
-            letter-spacing: 2px;
-        }
-        .lesson-romaji {
-            color: var(--lavender-dark);
-            font-weight: 600;
-            font-style: italic;
-        }
-        .lesson-translation {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 4px;
-        }
-        .audio-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--pink);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .audio-btn:hover {
-            background: var(--pink-dark);
-            transform: scale(1.1);
-        }
-        .audio-btn.playing {
-            animation: pulse-glow 0.8s infinite;
-        }
+    </script>
+</body>
+                        </html>
