@@ -24,6 +24,10 @@ jobs:
         cordova platform add android
         rm -rf www/*
         cp ../index.html www/
+        
+        # Yeh 2 lines aapke app ko sahi rasta dikhayengi aur error khatam kar dengi
+        echo '<content src="index.html" />' >> config.xml
+        echo '<preference name="ErrorUrl" value="index.html" />' >> config.xml
 
     - name: Build Android App
       run: |
